@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    
+    .text-field {
+        @apply w-full h-12 outline-none rounded-sm bg-transparent border px-2 text-lg
+    }
+
+    .primary-btn {
+        @apply w-full h-12 rounded-sm transition-all active:scale-90 bg-white text-black flex items-center justify-center
+    }
+
+
+}
