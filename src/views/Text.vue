@@ -24,7 +24,7 @@ const start = async () => {
     if (charBlocker(text.value)) return alert("Unsupported character")
 
     let record = [{ 
-            recordType: "url",
+            recordType: "text",
             data: text.value
         }]
     write(record, touchedDelay, loading)
