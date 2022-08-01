@@ -1,6 +1,7 @@
 <template>
   <div class="h-screen relative w-full flex items-center justify-center px-6">
     <div class="h-full w-full flex flex-col items-center justify-center gap-6">
+      <h1 class="text-lg font-semibold" >Create Digital Business Card for free</h1>
       <router-link to="/scan" class="primary-btn">
         <span class="font-semibold">SCAN CARD</span>
       </router-link>
