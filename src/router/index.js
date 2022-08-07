@@ -5,6 +5,7 @@ import Personal from '../views/Personal.vue'
 import Scan from '../views/Scan.vue'
 import Url from '../views/Url.vue'
 import Text from '../views/Text.vue'
+import Tutorial from '../views/Tutorial.vue'
 
 const routes = [
     {
@@ -26,6 +27,10 @@ const routes = [
     {
         path: "/text",
         component: Text
+    },
+    {
+        path: "/tutorial",
+        component: Tutorial
     }
 ]
 

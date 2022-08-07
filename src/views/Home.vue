@@ -14,6 +14,9 @@
       <router-link to="/text" class="primary-btn">
         <span class="font-semibold">ADD TEXT</span>
       </router-link>
+      <router-link to="/tutorial" class="primary-btn !bg-blue-700 text-white">
+        <span class="font-semibold">TUTORIAL</span>
+      </router-link>
     </div>
   </div>
 </template>
