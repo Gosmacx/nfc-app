@@ -9,7 +9,7 @@
     <div v-else class="w-full h-full flex flex-col items-center justify-center gap-8 " >
       <div class="w-full bg-gray-900 p-3 rounded-sm" >
         <h1 class="w-full text-center font-bold text-lg" >Some information about the card</h1>
-        <h2 class="font-semibold my-2" > Serial number: {{ serialNumber }} </h2>
+        <h2 class="font-semibold my-2" > Serial number: {{ serialNumberCard }} </h2>
         <span class="font-semibold" >Data:</span>
         <h2 v-for="item in data" :key="item" > {{ item }} </h2>
         <img id="myImg" src="">
