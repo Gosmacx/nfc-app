@@ -2,14 +2,14 @@
     <div v-if="!loading" class="w-full top-16 md:top-0 absolute md:relative md:h-screen flex flex-col items-center justify-center px-6 gap-6" >
 
         <span class="text-xs" >You don't have to fill everything.</span>
-        <input v-model="name" type="text" class="text-field" placeholder="Name" autofocus>
-        <input v-model="phone" type="tel" class="text-field" placeholder="Phone" >
-        <input v-model="email" type="text" class="text-field" placeholder="Email" >
-        <input v-model="title" type="text" class="text-field" placeholder="Title" >
-        <input v-model="website" type="text" class="text-field" placeholder="Website" >
+        <input @input="setData" v-model="name" type="text" class="text-field" placeholder="Name" autofocus>
+        <input @input="setData" v-model="phone" type="tel" class="text-field" placeholder="Phone" >
+        <input @input="setData" v-model="email" type="text" class="text-field" placeholder="Email" >
+        <input @input="setData" v-model="title" type="text" class="text-field" placeholder="Title" >
+        <input @input="setData" v-model="website" type="text" class="text-field" placeholder="Website" >
 
         <button @click="start" class="primary-btn" >
-            <span class="font-semibold" >Start Write</span>
+            <span class="font-semibold" >Start Write {{ data?.byteLength ? `: ${data.byteLength} BYTE ` : null }} </span>
         </button>
     </div>
     <Loading v-else :touchedDelay="touchedDelay" />
@@ -19,6 +19,7 @@
 import { ref } from 'vue'
 import write from '../utils/Write'
 import Loading from '../components/Loading.vue'
+import charBlocker from '../utils/charBlocker'
 
 const loading = ref(false)
 const name = ref(null)
@@ -26,40 +27,39 @@ const website = ref(null)
 const email = ref(null)
 const phone = ref(null)
 const title = ref(null)
+const data = ref(null)
 const touchedDelay = ref(false)
-import charBlocker from '../utils/charBlocker'
 
-const start = async () => {
+const setData = () => {
+
     const encoder = new TextEncoder();
-    const adjustedName = name.value?.split(" ").reverse().join(";") + ";;;"
-    if (charBlocker(adjustedName)) return alert("Unsupported character")
-        
-    let data = `BEGIN:VCARD
+
+    let information = `BEGIN:VCARD
 VERSION:3.0
-REV:2022-06-24T00:00:00Z
+${name.value ? `FN;CHARSET=UTF-8:${name.value}`: ''}
+${website.value ? `URL:${website.value}`: ''}
+${email.value ? `EMAIL:${email.value}`: ''}
+${phone.value ? `TEL;TYPE=CELL:${phone.value}`: ''}
+${title.value ? `TITLE;CHARSET=UTF-8:${title.value}` : ''}
+END:VCARD
 `
-    if (name) data += `N:${adjustedName}`;
-    if (website.value) data += `
-URL:${website.value}`
-    if (email.value) data += `
-EMAIL:${email.value}`
-    if (phone.value) data += `
-TEL;TYPE=CELL:${phone.value}`
-    if (title.value) data += `
-TITLE:${title.value}`
-        data += `
-END:VCARD`
+    // Clear empty lines.
+    information = information.replace(/^\s*$(?:\r\n?|\n)/gm, "")
+    data.value = encoder.encode(information)
+
+}
+const start = async () => {
+    if (!data.value) return;
 
     let record = [
         { 
             recordType: "mime",
             mediaType: "text/vcard", 
-            data: encoder.encode(data)
+            data: data.value
         }
     ]
 
     write(record, touchedDelay, loading)
-
 }
 
 </script>
