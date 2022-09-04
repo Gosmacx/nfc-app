@@ -16,6 +16,12 @@ export default createStore({
                     tutorialButton: 'TUTORIAL',
                     startWriteButton: 'Start Write',
                     startScanButton: 'Scan Card',
+                    scanAgainButton: 'Scan again',
+                    scanResult: {
+                        title: 'Some information about the card',
+                        serialNumber: 'Serial number:',
+                        data: 'Data:'
+                    },
                     personWarningMessage: "You don't have to fill everything.",
                     inputName: 'Name',
                     inputPhone: 'Phone',
@@ -39,6 +45,12 @@ export default createStore({
                     tutorialButton: 'NASIL KULLANILIR?',
                     startWriteButton: 'İşlemi Başlat',
                     startScanButton: 'Kart Tara',
+                    scanAgainButton: 'Tekrar Tara',
+                    scanResult: {
+                        title: 'Kart Hakkında Bazı Bilgiler',
+                        serialNumber: 'Seri Numara:',
+                        data: 'Veri:'
+                    },
                     personWarningMessage: "Hepsini doldurmak zorunda değilsiniz.",
                     inputName: 'İsim',
                     inputPhone: 'Telefon',
