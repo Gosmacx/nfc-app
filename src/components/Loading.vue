@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-screen flex items-center justify-center" :class="{ touched: props.touchedDelay }" >
-        <span class="text-3xl font-bold animate-pulse">Touch the Card...</span>
+        <span class="text-3xl font-bold animate-pulse">{{ $t('touchScreen') }} </span>
     </div>
 </template>
 

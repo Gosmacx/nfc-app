@@ -1,8 +1,8 @@
 <template>
     <div v-if="!loading" class="w-full top-16 md:top-0 absolute md:relative md:h-screen flex flex-col items-center justify-center px-6 gap-6" >
-        <input v-model="text" type="text" class="text-field" placeholder="Text Message" autofocus>
+        <input v-model="text" type="text" class="text-field" :placeholder="$t('inputText')" autofocus>
         <button @click="start" class="primary-btn" >
-            <span class="font-semibold" >Start Write</span>
+            <span class="font-semibold" >{{ $t('startWriteButton') }}</span>
         </button>
     </div>
     <Loading v-else :touchedDelay="touchedDelay" />
@@ -17,7 +17,6 @@ import charBlocker from '../utils/charBlocker'
 const loading = ref(false)
 const text = ref(null)
 const touchedDelay = ref(false)
-
 
 const start = async () => {
     if (!text.value) return alert("Specify a message")

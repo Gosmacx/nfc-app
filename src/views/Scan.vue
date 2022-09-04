@@ -3,7 +3,7 @@
   <div v-if="!loading" class="w-full h-screen flex relative items-center justify-center px-8" >
     
     <button v-if="!result" @click="start" class="primary-btn !w-24 !rounded-full">
-      <span class="font-semibold">Start scan</span>
+      <span class="font-semibold">{{ $t('startScanButton') }}</span>
     </button>
     
     <div v-else class="w-full h-full flex flex-col items-center justify-center gap-8 " >

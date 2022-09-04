@@ -4,12 +4,17 @@
             <img src="../assets/back.svg" width="30">
         </button>
         <h1 class="font-bold text-lg" >NFC qq</h1>
-        <h1>G</h1>
+        <button @click="setLang" class="w-8 h-8 bg-white rounded-full text-black font-semibold" > {{ store.state.selectedLang }} </button>
     </nav>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+
+const store = useStore()
 const router = useRouter()
+
+const setLang = () => store.commit('setLang', store.state.selectedLang == 'TR' ? 'EN' : 'TR');
 const back = () => router.back(-1);
 </script>

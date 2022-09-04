@@ -1,15 +1,15 @@
 <template>
     <div v-if="!loading" class="w-full top-16 md:top-0 absolute md:relative md:h-screen flex flex-col items-center justify-center px-6 gap-6" >
 
-        <span class="text-xs" >You don't have to fill everything.</span>
-        <input @input="setData" v-model="name" type="text" class="text-field" placeholder="Name" autofocus>
-        <input @input="setData" v-model="phone" type="tel" class="text-field" placeholder="Phone" >
-        <input @input="setData" v-model="email" type="text" class="text-field" placeholder="Email" >
-        <input @input="setData" v-model="title" type="text" class="text-field" placeholder="Title" >
-        <input @input="setData" v-model="website" type="text" class="text-field" placeholder="Website" >
+        <span class="text-xs" >{{ $t('personWarningMessage') }}</span>
+        <input @input="setData" v-model="name" type="text" class="text-field" :placeholder="$t('inputName')" autofocus>
+        <input @input="setData" v-model="phone" type="tel" class="text-field" :placeholder="$t('inputPhone')" >
+        <input @input="setData" v-model="email" type="text" class="text-field" :placeholder="$t('inputEmail')" >
+        <input @input="setData" v-model="title" type="text" class="text-field" :placeholder="$t('inputTitle')" >
+        <input @input="setData" v-model="website" type="text" class="text-field" :placeholder="$t('inputWebsite')" >
 
         <button @click="start" class="primary-btn" >
-            <span class="font-semibold" >Start Write {{ data?.byteLength ? `: ${data.byteLength} BYTE ` : null }} </span>
+            <span class="font-semibold" >{{ $t('startWriteButton') }} {{ data?.byteLength ? `: ${data.byteLength} BYTE ` : null }} </span>
         </button>
     </div>
     <Loading v-else :touchedDelay="touchedDelay" />
@@ -19,7 +19,6 @@
 import { ref } from 'vue'
 import write from '../utils/Write'
 import Loading from '../components/Loading.vue'
-import charBlocker from '../utils/charBlocker'
 
 const loading = ref(false)
 const name = ref(null)
