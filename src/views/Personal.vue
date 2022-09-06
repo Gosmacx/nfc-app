@@ -35,11 +35,11 @@ const setData = () => {
 
     let information = `BEGIN:VCARD
 VERSION:3.0
-${name.value ? `FN;CHARSET=UTF-8:${name.value}`: ''}
+${name.value ? `FN:${name.value}`: ''}
 ${website.value ? `URL:${website.value}`: ''}
 ${email.value ? `EMAIL:${email.value}`: ''}
 ${phone.value ? `TEL;TYPE=CELL:${phone.value}`: ''}
-${title.value ? `TITLE;CHARSET=UTF-8:${title.value}` : ''}
+${title.value ? `TITLE:${title.value}` : ''}
 END:VCARD
 `
     // Clear empty lines.
