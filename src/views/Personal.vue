@@ -34,7 +34,7 @@ const setData = () => {
     const encoder = new TextEncoder();
 
     let information = `BEGIN:VCARD
-VERSION:3.0
+VERSION:2.1
 ${name.value ? `FN:${name.value}`: ''}
 ${website.value ? `URL:${website.value}`: ''}
 ${email.value ? `EMAIL:${email.value}`: ''}
